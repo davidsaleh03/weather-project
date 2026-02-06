@@ -1,6 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
+import Current from "./pages/Current";
+import Quality from "./pages/Quality";
+import Forecast from "./pages/Forecast";
+import Riseset from "./pages/Riseset";
 
 function App() {
   return (
@@ -8,7 +12,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/info' element={<Info />}/>
+        <Route path='/info' exact element={<Info />}/>
+        <Route path='/info/current' element={<Current />}/>
+        <Route path='/info/air-quality' element={<Quality />}/>
+        <Route path='/info/forecast' element={<Forecast />}/>
+        <Route path='/info/riseset' element={<Riseset />}/>
       </Routes>
     </div>
     </Router>
