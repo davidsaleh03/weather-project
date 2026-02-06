@@ -130,9 +130,51 @@ NAV BAR
   color: rgb(21, 53, 89);
   transform: scale(0.8);
 }
+.nav__search--bar-2 {
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 650px;
+  height: 40px;
+}
+
+.search__input-2 {
+  font-size: 18px;
+  border: none;
+  width: 100%;
+  padding: 8px 0;
+  margin: 0 8px 0 24px;
+  color: rgb(16, 16, 221);
+}
+
+.search__btn-2 {
+  border: none;
+  background: none;
+}
+
+.fa-magnifying-glass-2 {
+  margin: 0 12px;
+  font-size: 24px;
+  color: rgb(8, 8, 85);
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.fa-magnifying-glass-2:hover {
+  color: rgb(56, 149, 255);
+  transform: scale(1.1);
+}
+
+.fa-magnifying-glass-2:active {
+  color: rgb(21, 53, 89);
+  transform: scale(0.8);
+}
 
 
-.search__input:focus {
+.search__input-2:focus {
   outline: none;
   box-shadow: none;
 }
@@ -178,9 +220,39 @@ NAV BAR
   z-index: 1;
 }
 
+.NavTwo {
+  background-color: blue;
+  height: 80px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1000000;
+}
+
+.home__btn {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.home__btn:hover {
+  transform: scale(1.1);
+}
+
+.home__btn:active {
+  opacity: 80%;
+  transform: scale(0.8);
+}
+
 @media(max-width: 1040px) {
   .nav__container {
     max-width: 800px;
+  }
+  .nav__search--bar-2 {
+    width: 500px
   }
 }
 
@@ -193,5 +265,23 @@ NAV BAR
   }
   .nav__top {
     margin-bottom: 64px;
+  }
+}
+
+@media(max-width: 768px) {
+  .nav__search--bar-2 {
+    width: 400px
+  }
+}
+
+@media(max-width: 660px) {
+  .nav__search--bar-2 {
+    width: 300px
+  }
+}
+
+@media(max-width: 560px) {
+  .nav__search--bar-2 {
+    width: 200px
   }
 }
