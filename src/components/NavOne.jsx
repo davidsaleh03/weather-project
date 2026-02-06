@@ -1,10 +1,12 @@
 import React from "react";
 import Logo from "../assets/logo3.png";
+import Background from "../assets/overlay.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const NavOne = () => {
   return (
+    <>
     <div className='NavOne'>
       <div className="nav__container">
           <div className="nav__top">
@@ -12,8 +14,8 @@ const NavOne = () => {
               <img src={Logo} alt="" />
             </figure>
             <ul className="nav__top--right">
-              <li className="top__right--item">Contact</li>
-              <li className="top__right--item item--2">Upgrade</li>
+              <li className="top__right--item link__hover-effect">Contact</li>
+              <li className="top__right--item item--2 link__hover-effect">Upgrade</li>
             </ul>
           </div>
           <div className="nav__middle">
@@ -31,7 +33,10 @@ const NavOne = () => {
             </form>
           </div>
       </div>
+      <img src={Background} alt="" className="background__nav" />
+      <div className="background__color"></div>
     </div>
+    </>
   );
 };
 
