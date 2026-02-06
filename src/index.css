@@ -285,3 +285,134 @@ NAV BAR
     width: 200px
   }
 }
+
+/* 
+
+HOME
+
+*/
+
+.Home {
+    background: linear-gradient(rgb(245, 245, 245), rgb(220, 220, 220));
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home__description h1 {
+  font-size: 36px;
+    font-weight: lighter;
+    color: #2e3fbf;
+    margin-bottom: 48px;
+    text-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
+
+.home__description--icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__description--icon {
+  width: 175px;
+  height: 175px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+  background: linear-gradient(to bottom, #1452b8 0%, #1f6fd6 50%, #4b90ee 100%);
+  text-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+  transition: all 300ms ease;
+}
+
+.home__description--icon:hover {
+  transform: scale(1.1);
+}
+
+.home__description--icon:active {
+  transform: scale(0.8);
+}
+
+.home__description--icon:not(:nth-child(5)) {
+  margin-right: 24px;
+}
+
+.icon__img {
+  width: 100%;
+}
+
+.icon-1 {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .home__description--icon {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 906px) {
+  .home__description--icon {
+  width: 150px;
+  height: 150px;
+  }
+}
+@media (max-width: 886px) {
+  .home__description--icon {
+  width: 125px;
+  height: 125px;
+  }
+}
+@media (max-width: 746px) {
+  .home__description--icon {
+  width: 135px;
+  height: 135px;
+  }
+  .icon-1 {
+  display: block;
+}
+
+.icon-2 {
+  margin-right: 24px !important;
+}
+.home__description--icon:not(:nth-child(5)) {
+  margin-right: 0px;
+}
+
+.home__description--icon:nth-child(1),
+.home__description--icon:nth-child(2),
+.home__description--icon:nth-child(3) {
+  margin-bottom: 12px;
+}
+
+.home__description--icons {
+  max-width: 498px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.home__description h1 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.home__description {
+  margin-top: 165px;
+
+}
+}
+
+/* 
+
+INFO
+
+*/

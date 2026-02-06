@@ -3,7 +3,7 @@ import NavTwo from '../components/NavTwo'
 
 const Info = () => {
   return (
-    <div>
+    <div className='Info'>
         <NavTwo />
     </div>
   )

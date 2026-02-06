@@ -1,10 +1,39 @@
 import React from 'react'
 import NavOne from '../components/NavOne'
+import Cloudy from "../assets/cloudyicon.gif";
+import Rainy from "../assets/rainyicon.gif";
+import Snow from "../assets/snowicon.gif";
+import Sunny from "../assets/sunny.gif";
+import Windy from "../assets/windyicon.gif";
+import HomeDescription from '../components/HomeDescription'
 
 const Home = () => {
   return (
-    <div>
+    <div className='Home'>
         <NavOne />
+        <div className="home__description">
+            <h1>Enter your city above to view weather details</h1>
+            <div className="home__description--icons">
+                <div className="home__description--icon icon-2">
+                    <img src={Cloudy} alt="" className="icon__img" />
+                </div>
+                <div className="home__description--icon icon-2">
+                    <img src={Rainy} alt="" className="icon__img" />
+                </div>
+                <div className="home__description--icon">
+                    <img src={Sunny} alt="" className="icon__img" />
+                </div>
+                <div className="home__description--icon icon-2">
+                    <img src={Windy} alt="" className="icon__img" />
+                </div>
+                <div className="home__description--icon icon-2">
+                    <img src={Snow} alt="" className="icon__img" />
+                </div>
+                <div className="home__description--icon icon-1">
+                    <img src={Cloudy} alt="" className="icon__img" />
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
