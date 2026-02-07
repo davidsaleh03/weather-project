@@ -1,8 +1,10 @@
 import React from "react";
 import NavTwo from "../components/NavTwo";
 import Cloudy from "../assets/cloudyicon.gif";
+import Rainy from "../assets/rainyicon.gif";
+import Humid from '../assets/raindrop.gif'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowPointer } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 
 const Info = () => {
@@ -30,22 +32,110 @@ const Info = () => {
               </div>
             </div>
             <div className="info__current--bottom">
-              <h1 className="current__bottom">Feels Like : 15.1°C</h1>
+              <h1 className="current__bottom">Feels Like : 15°C</h1>
               <h1 className="current__bottom">Humidity : 0</h1>
             </div>
             <div className="see__more">
                 <h1 className='see__text'>See More</h1>
-                <FontAwesomeIcon className='arrow__more' icon={faArrowPointer} />
+                <FontAwesomeIcon className='arrow__more' icon={faArrowRight} />
             </div>
           </div>
-          <div className="info__air-quality"></div>
-          <div className="info__alerts"></div>
-          <div className="info__forecast"></div>
-          <div className="info__riseset"></div>
+          <div className="info__air-quality">
+            <div className="air__quality--container">
+
+            <div className="airquality__info">
+                <h1 className="airquality__title">Air Quality:</h1>
+                <div className="airquality__data">
+                    <div className="quality__data--point">Carbon Monoxide (CO) Level : 449 PPB</div>
+                    <div className="quality__data--point">Nitrogen Dioxide (NO2) Level : 449 PPB</div>
+                    <div className="quality__data--point">Ozone (O3) Level: 100 PPB</div>
+                </div>
+            </div>
+            <div className="see__more more--2">
+                <h1 className='see__text'>See More</h1>
+                <FontAwesomeIcon className='arrow__more' icon={faArrowRight} />
+            </div>
+            </div>
+          </div>
+          <div className="info__alerts">
+            <h1 className="alerts">Alerts: No Current Alerts</h1>
+          </div>
+          <div className="info__forecast">
+            <div className='forecast__day--array'>
+            <div className="forecast__day">
+                <div className="forecast__date">02-06</div>
+                <div className="forecast__high">24°C</div>
+                <div className="forecast__low">24°C</div>
+                <div className="forecast__precipitation">
+                    <img src={Rainy} alt="" className="rainy" />
+                    <h1>90%</h1>
+                </div>
+                <div className="forecast__humidity">
+                    <img src={Humid} alt="" className="humid" />
+                    <h1>90%</h1>
+                </div>
+            </div>
+            <div className="forecast__day">
+                <div className="forecast__date">02-06</div>
+                <div className="forecast__high">24°C</div>
+                <div className="forecast__low">24°C</div>
+                <div className="forecast__precipitation">
+                    <img src={Rainy} alt="" className="rainy" />
+                    <h1>90%</h1>
+                </div>
+                <div className="forecast__humidity">
+                    <img src={Humid} alt="" className="humid" />
+                    <h1>90%</h1>
+                </div>
+            </div>
+            <div className="forecast__day">
+                <div className="forecast__date">02-06</div>
+                <div className="forecast__high">24°C</div>
+                <div className="forecast__low">24°C</div>
+                <div className="forecast__precipitation">
+                    <img src={Rainy} alt="" className="rainy" />
+                    <h1>90%</h1>
+                </div>
+                <div className="forecast__humidity">
+                    <img src={Humid} alt="" className="humid" />
+                    <h1>90%</h1>
+                </div>
+            </div>
+            <div className="forecast__day">
+                <div className="forecast__date">02-06</div>
+                <div className="forecast__high">24°C</div>
+                <div className="forecast__low">24°C</div>
+                <div className="forecast__precipitation">
+                    <img src={Rainy} alt="" className="rainy" />
+                    <h1>90%</h1>
+                </div>
+                <div className="forecast__humidity">
+                    <img src={Humid} alt="" className="humid" />
+                    <h1>90%</h1>
+                </div>
+            </div>
+            </div>
+            <div className="see__more more--3">
+                <h1 className='see__text'>See More</h1>
+                <FontAwesomeIcon className='arrow__more' icon={faArrowRight} />
+            </div>
+          </div>
+          <div className="info__riseset">
+            <div className="riseset__info">
+                <div className="riseset__h1">Sunrise</div>
+                <div className="riseset__act">06:46 AM</div>
+                <div className="riseset__left">+8hr53m</div>
+            </div>
+            <div className="see__more more--4">
+                <h1 className='see__text'>See More</h1>
+                <FontAwesomeIcon className='arrow__more' icon={faArrowRight} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
 
 export default Info;

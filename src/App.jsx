@@ -14,7 +14,7 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/info' exact element={<Info />}/>
         <Route path='/info/current' element={<Current />}/>
-        <Route path='/info/air-quality' element={<Quality />}/>
+        <Route path='/info/quality' element={<Quality />}/>
         <Route path='/info/forecast' element={<Forecast />}/>
         <Route path='/info/riseset' element={<Riseset />}/>
       </Routes>
