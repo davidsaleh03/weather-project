@@ -9,7 +9,10 @@ const Riseset = () => {
       <NavTwo />
       <div className="info__container">
         <div className="info__top">
-          <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+          <div className="info__top--left">
+            <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+            <h1>Astronomical Data for "New York"</h1>
+          </div>
           <div class="search__temp--change">
             <div class="temp__change--slider"></div>
             <button class="btn__temp-f click">°C</button>

@@ -1,15 +1,18 @@
-import React from 'react'
-import NavTwo from '../components/NavTwo'
+import React from "react";
+import NavTwo from "../components/NavTwo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Quality = () => {
   return (
-    <div className='Quality'>
+    <div className="Quality">
       <NavTwo />
       <div className="info__container">
         <div className="info__top">
-          <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+          <div className="info__top--left">
+            <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+            <h1>Air Quality for "New York"</h1>
+          </div>
           <div class="search__temp--change">
             <div class="temp__change--slider"></div>
             <button class="btn__temp-f click">°C</button>
@@ -17,40 +20,48 @@ const Quality = () => {
           </div>
         </div>
         <div className="info__data">
-           <div className="quality__more--module">
+          <div className="quality__more--module">
             <div className="quality__more--top-1">
-            <div className="quality__interior"><span className="quality-title">Carbon Monoxide (CO) Level</span>
-             
-               449 PPB</div>
-            <div className="quality__interior"> <span className="quality-title">Nitrogen Dioxide (NO2) Level</span>
-             
-               449 PPB</div>
-            <div className="quality__interior"><span className="quality-title">Ozone (O3) Level</span>
-             
-               100 PPB</div>
-            <div className="quality__interior"><span className="quality-title">Sulfur Dioxide (SO2)</span>
-             
-               20 PPB</div>
+              <div className="quality__interior margin-30">
+                <h1 className="quality__title">Carbon Monoxide (CO) Level</h1>
+                <h1 className="quality__title__data">449 PPB</h1>
+              </div>
+              <div className="quality__interior margin-30">
+                <h1 className="quality__title">Nitrogen Dioxide (NO2) Level</h1>
+                <h1 className="quality__title__data">449 PPB</h1>
+              </div>
+              <div className="quality__interior margin-30">
+                <h1 className="quality__title">Ozone (O3) Level</h1>
+                <h1 className="quality__title__data">100 PPB</h1>
+              </div>
+              <div className="quality__interior">
+                <h1 className="quality__title">Sulfur Dioxide (SO2)</h1>
+                <h1 className="quality__title__data">20 PPB</h1>
+              </div>
             </div>
             <div className="quality__more--bottom-1">
-            <div className="quality__interior"><span className="quality-title">US EPA Index </span>
-             
-               3</div>
-            <div className="quality__interior"><span className="quality-title">GB Defra Index</span>
-             
-               5</div>
-            <div className="quality__interior"><span className="quality-title">PM 2.5</span>
-             
-               42</div>
-            <div className="quality__interior"><span className="quality-title">PM 10</span>
-             
-               45</div>
+              <div className="quality__interior margin-30">
+                <h1 className="quality__title">US EPA Index</h1>
+                <h1 className="quality__title__data">3</h1>
+              </div>
+              <div className="quality__interior margin-30">
+                <h1 className="quality__title">GB Defra Index</h1>
+                <h1 className="quality__title__data">5</h1>
+              </div>
+              <div className="quality__interior margin-30">
+                <h1 className="quality__title">PM 2.5</h1>
+                <h1 className="quality__title__data">42</h1>
+              </div>
+              <div className="quality__interior">
+                <h1 className="quality__title">PM 10</h1>
+                <h1 className="quality__title__data">45</h1>
+              </div>
             </div>
-           </div>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Quality
+export default Quality;
