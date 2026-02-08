@@ -4,7 +4,7 @@ import Info from "./pages/Info";
 import Current from "./pages/Current";
 import Quality from "./pages/Quality";
 import Forecast from "./pages/Forecast";
-import Riseset from "./pages/Riseset";
+import Riseset from "./pages/Astronomy";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path='/info/current' element={<Current />}/>
         <Route path='/info/quality' element={<Quality />}/>
         <Route path='/info/forecast' element={<Forecast />}/>
-        <Route path='/info/riseset' element={<Riseset />}/>
+        <Route path='/info/astronomy' element={<Riseset />}/>
       </Routes>
     </div>
     </Router>
