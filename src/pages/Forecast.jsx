@@ -7,8 +7,10 @@ import Sunrise from "../assets/sunrise.gif";
 import Sunset from "../assets/sunset.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
 
 const Forecast = () => {
+  const { city } = useParams()
   return (
     <div className="Forecast">
       <NavTwo />

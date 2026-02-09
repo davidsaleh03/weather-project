@@ -2,8 +2,10 @@ import React from "react";
 import NavTwo from "../components/NavTwo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
 
 const Quality = () => {
+  const { city } = useParams()
   return (
     <div className="Quality">
       <NavTwo />

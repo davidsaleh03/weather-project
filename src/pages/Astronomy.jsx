@@ -7,8 +7,10 @@ import Moonset from "../assets/moonset.gif";
 import Moon from "../assets/moon.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from 'react-router-dom';
 
 const Riseset = () => {
+  const { city } = useParams()
   return (
     <div className='Astronomy'>
       <NavTwo />

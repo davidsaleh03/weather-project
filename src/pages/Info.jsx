@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavTwo from "../components/NavTwo";
 import Cloudy from "../assets/cloudyicon.gif";
 import Rainy from "../assets/rainyicon.gif";
 import Humid from '../assets/raindrop.gif'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
 
 
 const Info = () => {
+  const { city } = useParams()
+  const [data, setData] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  if (!state) {
+    navigate("/");
+    return null;
+  }
+
+  useEffect(() => {
+    async function fetchWeather() {
+        try {
+            setLoading(true);
+            const res = await fetch(
+                `https://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`
+            )
+            const result = await res.json();
+            setData(result);
+         } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+      fetchWeather()
+    }
+  },[city])
   return (
     <div className="Info">
       <NavTwo />

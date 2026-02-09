@@ -6,6 +6,10 @@ import { faMagnifyingGlass, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const NavTwo = () => {
+const handleSearch = (newCity) => {
+  navigate(`/info/${encodeURIComponent(newCity)}`);
+};
+
   return (
     <div className="NavTwo">
       <div className="nav__container">

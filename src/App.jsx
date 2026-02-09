@@ -12,11 +12,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/info' exact element={<Info />}/>
-        <Route path='/info/current' element={<Current />}/>
-        <Route path='/info/quality' element={<Quality />}/>
-        <Route path='/info/forecast' element={<Forecast />}/>
-        <Route path='/info/astronomy' element={<Riseset />}/>
+        <Route path='/info/:city' exact element={<Info />}/>
+        <Route path='/info/current/:city' element={<Current />}/>
+        <Route path='/info/quality/:city' element={<Quality />}/>
+        <Route path='/info/forecast/:city' element={<Forecast />}/>
+        <Route path='/info/astronomy/:city' element={<Riseset />}/>
       </Routes>
     </div>
     </Router>
