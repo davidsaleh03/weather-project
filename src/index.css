@@ -1616,7 +1616,16 @@ FORECAST
 .forecast__date-1 {
     font-size: 24px;
     color: #fff;
+    cursor: pointer;
+    transition: all 300ms ease;
   }
+
+.forecast__date-1.active {
+  /* background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%); */
+  background: linear-gradient(to bottom, #cc7415 0%, #e08c2a 50%, #f2b45f 100%);
+  border-radius: 12px;
+  padding: 4px 8px;
+}
 
 .forecast__date-1:not(:last-child) {
   margin-right: 36px;
@@ -1693,6 +1702,13 @@ background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%);
 .humid2__data {
   font-size: 36px;
   color: #fff;
+  width: 45px;
+}
+
+.humid2__data2 {
+  font-size: 36px;
+  color: #fff;
+  width: 94px;
 }
 
 .forecast__humid2-container {
@@ -1733,7 +1749,7 @@ background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #ff9933 0%, #ffb366 50%, #ffe0b3 100%);
+  background: linear-gradient(to bottom, #cc7415 0%, #e08c2a 50%, #f2b45f 100%);
   border-radius: 18px;
   width: 400px !important;
 }
