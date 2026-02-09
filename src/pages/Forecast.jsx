@@ -8,9 +8,36 @@ import Sunset from "../assets/sunset.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Forecast = () => {
-  const { city } = useParams()
+const Forecast = ( ) => {
+  const { city } = useParams();
+  const [weatherData, setWeatherData] = useState("");
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+    const getWeather = async () => {
+      setLoading(true);
+      try {
+        const { data } = await axios.get(
+          `https://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`,
+        );
+        setWeatherData(data);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getWeather();
+  }, [city]);
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <h2>Loading weather for {city}...</h2>
+      </div>
+    );
+  }
   return (
     <div className="Forecast">
       <NavTwo />

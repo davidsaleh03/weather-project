@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from 'react'
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import Current from "./pages/Current";
@@ -7,6 +8,8 @@ import Forecast from "./pages/Forecast";
 import Riseset from "./pages/Astronomy";
 
 function App() {
+  const [city, setCity] = useState('');
+
   return (
     <Router>
     <div className="App">

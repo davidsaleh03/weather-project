@@ -533,6 +533,61 @@ INFO
   position: relative;
 }
 
+.alertsActual {
+  overflow: hidden;
+  padding: 0px 18px 0px 10px;
+}
+
+.alert-ticker {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.alert-ticker__inner {
+  display: inline-block;
+  animation: scroll-alerts 100s linear infinite;
+}
+
+.alert-ticker__inner span {
+  display: inline-block;
+  margin-right: 3rem;
+}
+
+.alert-ticker__inner::after {
+  content: attr(data-text);
+  display: inline-block;
+  margin-left: 3rem;
+}
+.alert-ticker__inner-2 {
+  display: inline-block;
+  animation: scroll-alerts 100s linear infinite;
+}
+
+.alert-ticker__inner-2 span {
+  display: inline-block;
+  margin-right: 3rem;
+}
+
+.alert-ticker__inner-2::after {
+  content: attr(data-text);
+  display: inline-block;
+  margin-left: 3rem;
+}
+
+.ticker__color {
+  color: #fff;
+}
+
+.ticker__size {
+  font-size: 18px;
+}
+
+@keyframes scroll-alerts {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
 .info__riseset {
   position: relative;
   width: 350px;

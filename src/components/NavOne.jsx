@@ -7,7 +7,12 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
-const NavOne = ({ city, setCity, onSearch, loading }) => {
+const NavOne = ({setCity}) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const city1 = event.target.cityInput.value.trim();
+    setCity(city1)
+  }
   return (
     <>
       <div className="NavOne">
@@ -28,31 +33,27 @@ const NavOne = ({ city, setCity, onSearch, loading }) => {
             <form
               className="nav__search--bar"
               role="search"
-              onSubmit={(event) => {
-                event.preventDefault();
-                onSearch();
-              }}
+              onSubmit={handleSubmit}
             >
               <input
                 id="cityInput"
-                class="search__input"
+                name="cityInput"
+                className="search__input"
                 type="text"
-                value={city}
-                onChange={(event) => setCity(event.target.value)}
                 placeholder="Enter your city, ex. New York City"
               />
-              <button class="search__btn" type="submit" disabled={loading}>
-                {loading ? (
+              <button className="search__btn" type="submit">
+
                   <FontAwesomeIcon
                     className="fa-magnifying-glass"
                     icon={faSpinner}
                   />
-                ) : (
+ 
                   <FontAwesomeIcon
                     className="fa-magnifying-glass"
                     icon={faMagnifyingGlass}
                   />
-                )}
+
               </button>
             </form>
           </div>
