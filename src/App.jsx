@@ -14,12 +14,13 @@ function App() {
 
   const navigate = useNavigate();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     const navType = performance.getEntriesByType("navigation")[0].type;
     if (navType === "reload") {
       navigate("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
