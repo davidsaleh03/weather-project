@@ -7,12 +7,12 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
-const NavOne = ({setCity}) => {
+const NavOne = ({ loading, getData }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const city1 = event.target.cityInput.value.trim();
-    setCity(city1)
-  }
+    getData(city1);
+  };
   return (
     <>
       <div className="NavOne">
@@ -41,19 +41,17 @@ const NavOne = ({setCity}) => {
                 className="search__input"
                 type="text"
                 placeholder="Enter your city, ex. New York City"
+                required
               />
-              <button className="search__btn" type="submit">
-
-                  <FontAwesomeIcon
-                    className="fa-magnifying-glass"
-                    icon={faSpinner}
-                  />
- 
+              <button className="search__btn" type="submit" disabled={loading}>
+                {loading ? (
+                  <FontAwesomeIcon  className="fa-magnifying-glass spinner-rotate" icon={faSpinner} />
+                ) : (
                   <FontAwesomeIcon
                     className="fa-magnifying-glass"
                     icon={faMagnifyingGlass}
                   />
-
+                )}
               </button>
             </form>
           </div>

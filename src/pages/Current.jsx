@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import LoadingCurrent from "../components/LoadingCurrent";
 
 const Current = ( ) => {
     const { city } = useParams()
@@ -24,7 +25,9 @@ const Current = ( ) => {
         );
         setWeatherData(data);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       }
     };
     getWeather();
@@ -32,9 +35,23 @@ const Current = ( ) => {
 
   if (loading) {
     return (
-      <div className="loading-screen">
-        <h2>Loading weather for {city}...</h2>
+      <div className="Current">
+      <NavTwo />
+      <div className="info__container">
+        <div className="info__top">
+          <div className="info__top--left">
+            <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
+            <h1>Current Conditions for " "</h1>
+          </div>
+          <div class="search__temp--change">
+            <div class="temp__change--slider"></div>
+            <button class="btn__temp-f click">°C</button>
+            <button class="btn__temp-c click">°F</button>
+          </div>
+        </div>
+        <LoadingCurrent />
       </div>
+    </div>
     );
   }
 

@@ -8,12 +8,14 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingInfo from "../components/LoadingInfo";
 
 const Info = () => {
   const { city } = useParams();
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,12 +30,25 @@ const Info = () => {
       } catch (error) {
         setError(true);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       }
     };
     getWeather();
   }, [city]);
   console.log(weatherData);
+
+  useEffect(() => {
+  const checkScreenSize = () => {
+    setIsSmallScreen(window.innerWidth < 660); 
+  };
+
+  checkScreenSize();
+  window.addEventListener("resize", checkScreenSize);
+
+  return () => window.removeEventListener("resize", checkScreenSize);
+}, []);
 
   function alertMod(alertChk) {
     if (!alertChk) {
@@ -102,8 +117,19 @@ const Info = () => {
 
   if (loading) {
     return (
-      <div className="loading-screen">
-        <h2>Loading weather for {city}...</h2>
+      <div className="Info">
+        <NavTwo />
+        <div className="info__container">
+          <div className="info__top">
+            <h1 className="info__search">Search Results: " "</h1>
+            <div class="search__temp--change">
+              <div class="temp__change--slider"></div>
+              <button class="btn__temp-f click">°C</button>
+              <button class="btn__temp-c click">°F</button>
+            </div>
+          </div>
+          <LoadingInfo />
+        </div>
       </div>
     );
   }
@@ -132,7 +158,12 @@ const Info = () => {
           </div>
         </div>
         <div className="info__data">
-          <div className="info__current" onClick={() => navigate(`/info/current/${city}`)}>
+          <div
+            className="info__current"
+            onClick={() => {
+    if (!isSmallScreen) navigate(`/info/current/${city}`);
+  }}
+          >
             <div className="info__current--top">
               <div className="current__img">
                 <img src={Cloudy} alt="" className="current__img--img" />
@@ -154,7 +185,7 @@ const Info = () => {
                 Humidity: {Math.round(weatherData.current.humidity)}
               </h1>
             </div>
-            <div className="see__more">
+            <div className="see__more" onClick={() => navigate(`/info/current/${city}`)}>
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>
@@ -166,7 +197,12 @@ const Info = () => {
               />
             </div>
           </div>
-          <div className="info__air-quality" onClick={() => navigate(`/info/quality/${city}`)}>
+          <div
+            className="info__air-quality"
+            onClick={() => {
+    if (!isSmallScreen) navigate(`/info/quality/${city}`);
+  }}
+          >
             <div className="air__quality--container">
               <div className="airquality__info">
                 <h1 className="airquality__title">Air Quality:</h1>
@@ -185,7 +221,7 @@ const Info = () => {
                   </div>
                 </div>
               </div>
-              <div className="see__more more--2">
+              <div className="see__more more--2" onClick={() => navigate(`/info/quality/${city}`)}>
                 <h1 className="see__text">See More</h1>
                 <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
               </div>
@@ -229,7 +265,13 @@ const Info = () => {
                 .slice(0, 4)
                 .map((day, index) => {
                   return (
-                    <div className="forecast__day" key={index} onClick={() => navigate(`/info/forecast/${city}`)}>
+                    <div
+                      className="forecast__day"
+                      key={index}
+                      onClick={() => {
+    if (!isSmallScreen) navigate(`/info/forecast/${city}`);
+  }}
+                    >
                       <div className="forecast__date">
                         {day.date.slice(5, 10)}
                       </div>
@@ -249,26 +291,32 @@ const Info = () => {
                       </div>
                       <div className="search__more--forecast">
                         <FontAwesomeIcon
-                className="see__more--left"
-                icon={faArrowRight}
-              />
+                          className="see__more--left"
+                          icon={faArrowRight}
+                        />
                       </div>
                     </div>
                   );
                 })}
             </div>
-            <div className="see__more more--3">
+            <div className="see__more more--3" onClick={() => navigate(`/info/forecast/${city}`)}>
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>
           </div>
-          <div className="info__riseset" onClick={() => navigate(`/info/astronomy/${city}`)}>
+          <div
+            className="info__riseset"
+            onClick={() => {
+    if (!isSmallScreen) navigate(`/info/astronomy/${city}`);
+  }}
+
+          >
             <div className="riseset__info">
               <div className="riseset__h1">{nextTitle}</div>
               <div className="riseset__act">{nextEventTime}</div>
               <div className="riseset__left">{timeUntil}</div>
             </div>
-            <div className="see__more more--4">
+            <div className="see__more more--4" onClick={() => navigate(`/info/astronomy/${city}`)}>
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>

@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingForecast from "../components/LoadingForecast";
 
 const Forecast = () => {
   const { city } = useParams();
@@ -27,7 +28,9 @@ const Forecast = () => {
         );
         setWeatherData(data);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       }
     };
     getWeather();
@@ -41,9 +44,23 @@ const Forecast = () => {
 
   if (loading) {
     return (
-      <div className="loading-screen">
-        <h2>Loading weather for {city}...</h2>
+      <div className="Forecast">
+      <NavTwo />
+      <div className="info__container">
+        <div className="info__top">
+          <div className="info__top--left">
+                      <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
+                      <h1>Forecast for " "</h1>
+                    </div>
+          <div class="search__temp--change">
+            <div class="temp__change--slider"></div>
+            <button class="btn__temp-f click">°C</button>
+            <button class="btn__temp-c click">°F</button>
+          </div>
+        </div>
+        <LoadingForecast />
       </div>
+    </div>
     );
   }
 

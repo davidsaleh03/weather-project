@@ -15,7 +15,7 @@ const NavTwo = ( ) => {
           <figure className="nav__logo">
             <img src={Logo} alt="" />
           </figure>
-          <form className="nav__search--bar-2" role="search">
+          {/* <form className="nav__search--bar-2" role="search">
             <input
               id="cityInput"
               class="search__input-2"
@@ -28,7 +28,7 @@ const NavTwo = ( ) => {
                 icon={faMagnifyingGlass}
               />
             </button>
-          </form>
+          </form> */}
           <ul className="nav__top--right">
             <Link to="/">
               <FontAwesomeIcon className="home__btn" icon={faHouse} />
