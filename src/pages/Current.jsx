@@ -14,6 +14,7 @@ const Current = ( ) => {
     const { city } = useParams()
     const [weatherData, setWeatherData] = useState("");
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate()
     useEffect(() => {
     const getWeather = async () => {
       setLoading(true);
@@ -43,7 +44,7 @@ const Current = ( ) => {
       <div className="info__container">
         <div className="info__top">
           <div className="info__top--left">
-            <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+            <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
             <h1>Current Conditions for "{weatherData.location.name},{" "}
             {weatherData.location.country}"</h1>
           </div>

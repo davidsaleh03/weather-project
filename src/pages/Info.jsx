@@ -5,7 +5,8 @@ import Rainy from "../assets/rainyicon.gif";
 import Humid from "../assets/raindrop.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Info = () => {
@@ -13,6 +14,7 @@ const Info = () => {
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getWeather = async () => {
@@ -130,7 +132,7 @@ const Info = () => {
           </div>
         </div>
         <div className="info__data">
-          <div className="info__current">
+          <div className="info__current" onClick={() => navigate(`/info/current/${city}`)}>
             <div className="info__current--top">
               <div className="current__img">
                 <img src={Cloudy} alt="" className="current__img--img" />
@@ -156,8 +158,15 @@ const Info = () => {
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>
+            <div className="search__more--hover">
+              <h1>See More</h1>
+              <FontAwesomeIcon
+                className="see__more--left"
+                icon={faArrowRight}
+              />
+            </div>
           </div>
-          <div className="info__air-quality">
+          <div className="info__air-quality" onClick={() => navigate(`/info/quality/${city}`)}>
             <div className="air__quality--container">
               <div className="airquality__info">
                 <h1 className="airquality__title">Air Quality:</h1>
@@ -181,28 +190,36 @@ const Info = () => {
                 <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
               </div>
             </div>
+            <div className="search__more--hover">
+              <h1>See More</h1>
+              <FontAwesomeIcon
+                className="see__more--left left-more-1"
+                icon={faArrowRight}
+              />
+            </div>
           </div>
           <div className="info__alerts">
             <h1 className="alerts">Alerts:</h1>
             <div className="alertsActual">
               <div className="alert-ticker">
-                {
-                    weatherData.alerts.alert[0] 
-                    ?
-                    (
-                <div className="alert-ticker__inner"
-                data-text={weatherData.alerts?.alert?.map(a => `⚠️ ${a.desc} `).join("   ")}
-                >
-                  {weatherData.alerts.alert.map((a, i) => (
-                    <span className='ticker__color' key={i}>⚠️ {a.desc}</span>
-                  ))}
-                </div>
-                    )
-                    :
-                    (
-                        <h1 className='ticker__color ticker__size'>No Current Alerts</h1>
-                    )
-                }
+                {weatherData.alerts.alert[0] ? (
+                  <div
+                    className="alert-ticker__inner"
+                    data-text={weatherData.alerts?.alert
+                      ?.map((a) => `⚠️ ${a.desc} `)
+                      .join("   ")}
+                  >
+                    {weatherData.alerts.alert.map((a, i) => (
+                      <span className="ticker__color" key={i}>
+                        ⚠️ {a.desc}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <h1 className="ticker__color ticker__size">
+                    No Current Alerts
+                  </h1>
+                )}
               </div>
             </div>
           </div>
@@ -212,7 +229,7 @@ const Info = () => {
                 .slice(0, 4)
                 .map((day, index) => {
                   return (
-                    <div className="forecast__day" key={index}>
+                    <div className="forecast__day" key={index} onClick={() => navigate(`/info/forecast/${city}`)}>
                       <div className="forecast__date">
                         {day.date.slice(5, 10)}
                       </div>
@@ -230,6 +247,12 @@ const Info = () => {
                         <img src={Humid} alt="" className="humid" />
                         <h1>{Math.round(day.day.avghumidity)}</h1>
                       </div>
+                      <div className="search__more--forecast">
+                        <FontAwesomeIcon
+                className="see__more--left"
+                icon={faArrowRight}
+              />
+                      </div>
                     </div>
                   );
                 })}
@@ -239,7 +262,7 @@ const Info = () => {
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>
           </div>
-          <div className="info__riseset">
+          <div className="info__riseset" onClick={() => navigate(`/info/astronomy/${city}`)}>
             <div className="riseset__info">
               <div className="riseset__h1">{nextTitle}</div>
               <div className="riseset__act">{nextEventTime}</div>
@@ -248,6 +271,13 @@ const Info = () => {
             <div className="see__more more--4">
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
+            </div>
+            <div className="search__more--hover">
+              <h1 className="see--h1">See More</h1>
+              <FontAwesomeIcon
+                className="see__more--left"
+                icon={faArrowRight}
+              />
             </div>
           </div>
         </div>

@@ -438,6 +438,21 @@ INFO
 .info__search {
   font-size: 24px;
   margin-right: 12px;
+  transition: all 300ms ease;
+}
+.info__search1 {
+  font-size: 24px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.info__search1:hover {
+  transform: scale(1.05);
+}
+.info__search1:active {
+  transform: scale(0.9);
+  opacity: 0.8;
 }
 
 .info__top--left {
@@ -649,6 +664,66 @@ INFO
   position: relative;
 }
 
+.search__more--hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.search__more--hover h1{
+  color: #fff;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+.see--h1 {
+  font-size: 26px !important;
+}
+
+.see__more--left {
+  color: #fff;
+  font-size: 28px;
+}
+
+.info__current:hover .info__current--top,
+.info__current:hover .info__current--bottom {
+  filter: blur(8px);
+}
+
+.info__current:hover .search__more--hover,
+.info__air-quality:hover .search__more--hover,
+.info__riseset:hover .search__more--hover,
+.forecast__day:hover .search__more--forecast {
+  opacity: 100%;
+}
+
+
+.info__air-quality:hover .air__quality--container {
+  filter: blur(8px);
+}
+
+.info__riseset:hover .riseset__info {
+  filter: blur(8px);
+}
+
+.forecast__day:hover .forecast__date,
+.forecast__day:hover .forecast__high,
+.forecast__day:hover .forecast__low,
+.forecast__day:hover .forecast__precipitation,
+.forecast__day:hover .forecast__humidity,
+.forecast__day:hover .forecast__precipitation {
+  filter: blur(8px);
+}
+
+
+
 .info__current--top {
   display: flex;
   margin-bottom: 12px;
@@ -745,6 +820,16 @@ INFO
 .info__air-quality {
   padding: 8px 36px;
   position: relative;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.info__air-quality:hover {
+  transform: scale(1.05);
+}
+
+.info__air-quality:active {
+  transform: scale(0.9)
 }
 
 .airquality__title {
@@ -765,7 +850,17 @@ INFO
   margin-bottom: 8px;
 }
 
+.search__more--forecast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
 .forecast__day {
+  position: relative;
   width: 115px;
   height: 200px;
   background: linear-gradient(to bottom, #ff9933 0%, #ffb366 50%, #ffe0b3 100%);
@@ -900,6 +995,7 @@ background: linear-gradient(to bottom, #1452b8 0%, #1f6fd6 50%, #4b90ee 100%);
   .info__air-quality {
     width: 350px;
   }
+
   .info__forecast {
     width: 450px;
   }
@@ -1043,6 +1139,11 @@ background: linear-gradient(to bottom, #1452b8 0%, #1f6fd6 50%, #4b90ee 100%);
     cursor: pointer;
   }
 
+  .info__air-quality:hover,
+  .info__air-quality:active {
+    transform: unset;
+  }
+
   .see__more:active,
   .see__more:active {
     opacity: 0.8;
@@ -1124,6 +1225,36 @@ background: linear-gradient(to bottom, #1452b8 0%, #1f6fd6 50%, #4b90ee 100%);
   .airquality__info {
     margin-bottom: 12px;
   }
+  .info__current:hover .info__current--top,
+.info__current:hover .info__current--bottom {
+  filter: blur(0px);
+}
+
+.info__current:hover .search__more--hover,
+.info__air-quality:hover .search__more--hover,
+.info__riseset:hover .search__more--hover,
+.forecast__day:hover .search__more--forecast {
+  opacity: 0%;
+}
+
+
+.info__air-quality:hover .air__quality--container {
+  filter: blur(0px);
+}
+
+.info__riseset:hover .riseset__info {
+  filter: blur(0px);
+}
+
+.forecast__day:hover .forecast__date,
+.forecast__day:hover .forecast__high,
+.forecast__day:hover .forecast__low,
+.forecast__day:hover .forecast__precipitation,
+.forecast__day:hover .forecast__humidity,
+.forecast__day:hover .forecast__precipitation {
+  filter: blur(0px);
+}
+
 }
 
 /* 

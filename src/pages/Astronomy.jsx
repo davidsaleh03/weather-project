@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Riseset = ( ) => {
@@ -16,6 +17,7 @@ const Riseset = ( ) => {
 
   const [weatherData, setWeatherData] = useState("");
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate()
     useEffect(() => {
     const getWeather = async () => {
       setLoading(true);
@@ -107,7 +109,7 @@ const Riseset = ( ) => {
       <div className="info__container">
         <div className="info__top">
           <div className="info__top--left">
-            <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+            <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
             <h1>Astronomical Data for "{weatherData.location.name},{" "}
             {weatherData.location.country}"</h1>
           </div>

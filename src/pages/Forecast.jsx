@@ -17,6 +17,7 @@ const Forecast = () => {
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0)
+  const navigate = useNavigate()
   useEffect(() => {
     const getWeather = async () => {
       setLoading(true);
@@ -54,7 +55,7 @@ const Forecast = () => {
       <div className="info__container">
         <div className="info__top">
           <div className="info__top--left">
-                      <FontAwesomeIcon className="info__search" icon={faArrowLeft} />
+                      <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
                       <h1>Forecast for "{weatherData.location.name},{" "}
                       {weatherData.location.country}"</h1>
                     </div>
