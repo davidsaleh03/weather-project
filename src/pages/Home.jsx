@@ -17,7 +17,7 @@ const Home = ({temp, setTemp}) => {
   async function getData(cityName) {
     setLoading(true)
     try {
-      const { data } = await axios.get(
+       await axios.get(
         `https://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${cityName}&days=7&aqi=yes&alerts=yes`,
       );
       navigate(`/info/${cityName}`)
