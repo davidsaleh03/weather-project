@@ -2275,6 +2275,12 @@ background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%);
   width: 70px;
   height: 40px;
 }
+.quality__more--module-1 img {
+  width: 125px;
+}
+.forecast__humid2 img {
+  width: 60px;
+}
 }
 
 @media (max-width: 795px) {
@@ -2294,11 +2300,30 @@ background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%);
   width: 60px;
   height: 30px;
 }
+.quality__more--container22 h1{
+  font-size: 24px;
+}
+.humid2__data2 {
+  font-size: 24px;
+  width: unset;
+}
 }
 
 @media (max-width: 660px) {
   .forecast__date-1:not(:last-child) {
   margin-right: 18px;
+}
+.quality__more--module-1 img {
+  width: 140px;
+}
+.quality__more--container22 {
+  margin-bottom: 8px;
+}
+.quality__more--container22 h1{
+  font-size: 36px;
+}
+.forecast__humid2 img {
+  width: 100px;
 }
 .forecast__date-1 {
     font-size: 16px;
@@ -2306,6 +2331,10 @@ background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%);
 
   .quality__more--module--2 {
     height: 100%;
+  }
+
+  .humid2__data2 {
+    font-size: 36px;
   }
 
 .quality__more--module-1 {
