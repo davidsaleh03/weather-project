@@ -1,6 +1,10 @@
 import React from "react";
 import NavTwo from "../components/NavTwo";
 import Cloudy from "../assets/cloudyicon.gif";
+import Rainy from "../assets/rainyicon.gif";
+import Snow from "../assets/snowicon.gif";
+import Sunny from "../assets/sunny.gif";
+import Windy from "../assets/windyicon.gif";
 import Humid from "../assets/raindrop.gif";
 import Rainy2 from "../assets/rainy2.gif";
 import Sunrise from "../assets/sunrise.gif";
@@ -76,6 +80,38 @@ const Forecast = ({temp, setTemp}) => {
     );
   }
 
+  function getWeatherIcon(data) {
+
+   if (data.includes('sunny') || data.includes("clear")) {
+    return Sunny
+   }
+   if (
+    data.includes("snow") ||
+    data.includes("blizzard")
+  ) {
+    return Snow;
+  }
+  if (
+    data.includes("rain") ||
+    data.includes("drizzle") ||
+    data.includes("sleet") ||
+    data.includes("shower") ||
+    data.includes("ice pellets") ||
+    data.includes("thunder")
+  ) {
+    return Rainy;
+  }
+  if (
+    data.includes("mist") ||
+    data.includes("fog") ||
+    data.includes("cloud") ||
+    data.includes("overcast")
+  ) {
+    return Cloudy;
+  }
+  return Cloudy;
+  }
+
   const activeDay = weatherData.forecast.forecastday[activeIndex]
 
   return (
@@ -121,7 +157,7 @@ const Forecast = ({temp, setTemp}) => {
           <div className="quality__more--module--2">
             <div className="quality__more--module-top">
               <div className="quality__more--module-1">
-                <img src={Cloudy} alt="" className="forecast__img22" />
+                <img src={getWeatherIcon(activeDay.day.condition.text.toLowerCase())} alt="" className="forecast__img22" />
                 <div className="quality__more--container22">
                   {
                     temp
@@ -194,7 +230,7 @@ const Forecast = ({temp, setTemp}) => {
                       return <div className="forecast__hourly" key={index}>
                     <h1 className="forecast__hourly--title">{hour.time.slice(11)}</h1>
                     <div className="forecast__hourly--data">
-                      <img src={Cloudy} alt="" className="hourly__img" />
+                      <img src={getWeatherIcon(hour.condition.text.toLowerCase())} alt="" className="hourly__img" />
                       <h1>{hour.condition.text}</h1>
                       {
                         temp

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavTwo from "../components/NavTwo";
 import Cloudy from "../assets/cloudyicon.gif";
+import Rainy from "../assets/rainyicon.gif";
+import Snow from "../assets/snowicon.gif";
+import Sunny from "../assets/sunny.gif";
+import Windy from "../assets/windyicon.gif";
 import Humid from "../assets/raindrop.gif";
 import Rainy2 from "../assets/rainy2.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -72,6 +76,38 @@ const Current = ({ temp, setTemp }) => {
     );
   }
 
+  function getWeatherIcon(data) {
+
+   if (data.includes('sunny') || data.includes("clear")) {
+    return Sunny
+   }
+   if (
+    data.includes("snow") ||
+    data.includes("blizzard")
+  ) {
+    return Snow;
+  }
+  if (
+    data.includes("rain") ||
+    data.includes("drizzle") ||
+    data.includes("sleet") ||
+    data.includes("shower") ||
+    data.includes("ice pellets") ||
+    data.includes("thunder")
+  ) {
+    return Rainy;
+  }
+  if (
+    data.includes("mist") ||
+    data.includes("fog") ||
+    data.includes("cloud") ||
+    data.includes("overcast")
+  ) {
+    return Cloudy;
+  }
+  return Cloudy;
+  }
+
   return (
     <div className="Current">
       <NavTwo />
@@ -112,7 +148,7 @@ const Current = ({ temp, setTemp }) => {
           <div className="quality__more--module">
             <div className="current__top">
               <div className="current-1">
-                <img src={Cloudy} alt="" className="current__img--1" />
+                <img src={getWeatherIcon(weatherData.current.condition.text.toLowerCase())} alt="" className="current__img--1" />
                 <div className="current__description">
                     {
                         temp

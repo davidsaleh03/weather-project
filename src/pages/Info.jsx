@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import NavTwo from "../components/NavTwo";
 import Cloudy from "../assets/cloudyicon.gif";
 import Rainy from "../assets/rainyicon.gif";
+import Snow from "../assets/snowicon.gif";
+import Sunny from "../assets/sunny.gif";
+import Windy from "../assets/windyicon.gif";
+import Rainy2 from "../assets/rainy2.gif";
 import Humid from "../assets/raindrop.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -154,6 +158,37 @@ const Info = ({ temp, setTemp }) => {
     weatherData.forecast.forecastday[0].astro,
     weatherData.location.localtime,
   );
+  function getWeatherIcon(data) {
+
+   if (data.includes('sunny') || data.includes("clear")) {
+    return Sunny
+   }
+   if (
+    data.includes("snow") ||
+    data.includes("blizzard")
+  ) {
+    return Snow;
+  }
+  if (
+    data.includes("rain") ||
+    data.includes("drizzle") ||
+    data.includes("sleet") ||
+    data.includes("shower") ||
+    data.includes("ice pellets") ||
+    data.includes("thunder")
+  ) {
+    return Rainy;
+  }
+  if (
+    data.includes("mist") ||
+    data.includes("fog") ||
+    data.includes("cloud") ||
+    data.includes("overcast")
+  ) {
+    return Cloudy;
+  }
+  return Cloudy;
+  }
   return (
     <div className="Info">
       <NavTwo />
@@ -184,7 +219,7 @@ const Info = ({ temp, setTemp }) => {
           >
             <div className="info__current--top">
               <div className="current__img">
-                <img src={Cloudy} alt="" className="current__img--img" />
+                <img src={getWeatherIcon(weatherData.current.condition.text.toLowerCase())} alt="" className="current__img--img" />
               </div>
               <div className="current__info">
                 {temp ? (
@@ -331,7 +366,7 @@ const Info = ({ temp, setTemp }) => {
                         </div>
                       )}
                       <div className="forecast__precipitation">
-                        <img src={Rainy} alt="" className="rainy" />
+                        <img src={Rainy2} alt="" className="rainy" />
                         <h1>{Math.round(day.day.daily_chance_of_rain)}%</h1>
                       </div>
                       <div className="forecast__humidity">
