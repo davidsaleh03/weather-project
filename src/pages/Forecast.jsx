@@ -109,7 +109,7 @@ const Forecast = ({temp, setTemp}) => {
   ) {
     return Cloudy;
   }
-  return Cloudy;
+  return Windy;
   }
 
   const activeDay = weatherData.forecast.forecastday[activeIndex]

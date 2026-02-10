@@ -105,7 +105,7 @@ const Current = ({ temp, setTemp }) => {
   ) {
     return Cloudy;
   }
-  return Cloudy;
+  return Windy;
   }
 
   return (

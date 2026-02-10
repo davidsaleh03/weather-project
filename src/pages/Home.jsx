@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavOne from "../components/NavOne";
 import Cloudy from "../assets/cloudyicon.gif";
@@ -10,7 +10,6 @@ import Windy from "../assets/windyicon.gif";
 import axios from "axios";
 
 const Home = ({temp, setTemp}) => {
-  const [dataAct, setDataAct] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
@@ -22,7 +21,6 @@ const Home = ({temp, setTemp}) => {
         `https://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${cityName}&days=7&aqi=yes&alerts=yes`,
       );
       navigate(`/info/${cityName}`)
-      setDataAct(data);
       setError(false);
     } catch (err) {
       setError(true);

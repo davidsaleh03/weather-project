@@ -1,9 +1,8 @@
 import React from "react";
 import Logo from "../assets/logo3.png";
-import { useNavigate } from "react-router-dom";
 import Background from "../assets/overlay.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const NavTwo = ( ) => {

@@ -9,7 +9,7 @@ import Rainy2 from "../assets/rainy2.gif";
 import Humid from "../assets/raindrop.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingInfo from "../components/LoadingInfo";
@@ -53,14 +53,6 @@ const Info = ({ temp, setTemp }) => {
 
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
-
-  function alertMod(alertChk) {
-    if (!alertChk) {
-      return `No Current Alerts`;
-    } else {
-      return `${weatherData.alerts.alert[0].desc}`;
-    }
-  }
 
   function timeToMinutes(t) {
     let [time, modifier] = t.split(" ");
@@ -187,7 +179,7 @@ const Info = ({ temp, setTemp }) => {
   ) {
     return Cloudy;
   }
-  return Cloudy;
+  return Windy;
   }
   return (
     <div className="Info">
