@@ -860,6 +860,7 @@ INFO
   color: #fff;
   font-size: 24px;
   font-weight: 200;
+  text-align: center;
 }
 
 .current__bottom {
@@ -889,7 +890,8 @@ INFO
 .info__current--top::after {
   position: absolute;
   content: " ";
-  width: 100%;
+  width: 90%;
+  left: 5%;
   height: 0.5px;
   background-color: #ffff;
   bottom: 1px;
@@ -944,7 +946,7 @@ INFO
 }
 
 .quality__data--point:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 }
 
 .search__more--forecast {
@@ -1001,6 +1003,8 @@ INFO
   font-size: 18px;
   font-weight: 400;
   color: #fff;
+  width: 44px;
+  text-align: center;
 }
 
 .forecast__precipitation,
@@ -1010,11 +1014,21 @@ INFO
   align-items: center;
 }
 
+.forecast__precipitation {
+  margin-bottom: 8px;
+}
+
 .rainy {
   width: 40px;
+  box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.45);
+  border-radius: 50%;
+
 }
 .humid {
   width: 40px;
+  box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.45);
+  border-radius: 50%;
+
 }
 
 /* .forecast__day:first-child {
@@ -1094,6 +1108,9 @@ background: linear-gradient(to bottom, #1452b8 0%, #1f6fd6 50%, #4b90ee 100%);
   .riseset__h1 {
     font-size: 48px;
   }
+  .quality__data--point:not(:last-child) {
+    margin-bottom: 8px;
+}
   .riseset__act {
     font-size: 50px;
   }
@@ -1474,6 +1491,7 @@ CURRENT
   font-size: 22px;
   color: #fff;
   font-weight: 300;
+  text-align: center;
 }
 
 .current__middle {
@@ -2259,6 +2277,7 @@ background: linear-gradient(to bottom, #e68c1a 0%, #f5a333 50%, #ffd180 100%);
   font-size: 22px;
   color: #fff;
   font-weight: 300;
+  text-align: center;
 }
 
 @media (max-width: 1040px) {
