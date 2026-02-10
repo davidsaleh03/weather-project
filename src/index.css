@@ -11,6 +11,14 @@ ul {
   text-decoration: none;
 }
 
+.temp__change--slider {
+  transform: translateX(0);
+}
+
+.temp__change--slider.active {
+  transform: translateX(100%);
+}
+
 /* 
 
 NAV BAR 

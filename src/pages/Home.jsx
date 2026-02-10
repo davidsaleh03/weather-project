@@ -9,7 +9,7 @@ import Sunny from "../assets/sunny.gif";
 import Windy from "../assets/windyicon.gif";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({temp, setTemp}) => {
   const [dataAct, setDataAct] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false)

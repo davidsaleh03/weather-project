@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import LoadingCurrent from "../components/LoadingCurrent";
 
-const Current = ( ) => {
+const Current = ({temp, setTemp}) => {
     const { city } = useParams()
     const [weatherData, setWeatherData] = useState("");
     const [loading, setLoading] = useState(true);
@@ -44,9 +44,11 @@ const Current = ( ) => {
             <h1>Current Conditions for " "</h1>
           </div>
           <div class="search__temp--change">
-            <div class="temp__change--slider"></div>
-            <button class="btn__temp-f click">°C</button>
-            <button class="btn__temp-c click">°F</button>
+            <div className={`temp__change--slider ${
+                temp ? 'active' : ''
+            }`}></div>
+            <button className="btn__temp-f click"onClick={() => setTemp(false)}>°C</button>
+            <button class="btn__temp-c click" onClick={() => setTemp(true)}>°F</button>
           </div>
         </div>
         <LoadingCurrent />

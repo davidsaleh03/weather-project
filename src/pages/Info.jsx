@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingInfo from "../components/LoadingInfo";
 
-const Info = () => {
+const Info = ({temp, setTemp}) => {
   const { city } = useParams();
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
@@ -152,9 +152,11 @@ const Info = () => {
             {weatherData.location.country}"
           </h1>
           <div class="search__temp--change">
-            <div class="temp__change--slider"></div>
-            <button class="btn__temp-f click">°C</button>
-            <button class="btn__temp-c click">°F</button>
+            <div className={`temp__change--slider ${
+                temp ? 'active' : ''
+            }`}></div>
+            <button class="btn__temp-f click" onClick={() => setTemp(false)}>°C</button>
+            <button class="btn__temp-c click" onClick={() => setTemp(true)}>°F</button>
           </div>
         </div>
         <div className="info__data">
@@ -169,18 +171,35 @@ const Info = () => {
                 <img src={Cloudy} alt="" className="current__img--img" />
               </div>
               <div className="current__info">
-                <h1 className="current__ammount">
+                {
+                    temp
+                    ?
+                    <h1 className="current__ammount">
                   {Math.round(weatherData.current.temp_f)}°F
                 </h1>
+                :
+                <h1 className="current__ammount">
+                  {Math.round(weatherData.current.temp_c)}°C
+                </h1>
+                }
                 <h1 className="current__feel">
                   {weatherData.current.condition.text}
                 </h1>
               </div>
             </div>
             <div className="info__current--bottom">
-              <h1 className="current__bottom">
+                {
+                    temp 
+                    ?
+                    <h1 className="current__bottom">
                 Feels Like: {Math.round(weatherData.current.feelslike_f)}°F
               </h1>
+              :
+              <h1 className="current__bottom">
+                Feels Like: {Math.round(weatherData.current.feelslike_c)}°C
+              </h1>
+                }
+             
               <h1 className="current__bottom">
                 Humidity: {Math.round(weatherData.current.humidity)}
               </h1>
@@ -275,12 +294,28 @@ const Info = () => {
                       <div className="forecast__date">
                         {day.date.slice(5, 10)}
                       </div>
-                      <div className="forecast__high">
+                      {
+                        temp 
+                        ?
+                        <div className="forecast__high">
                         {Math.round(day.day.maxtemp_f)}°F
                       </div>
-                      <div className="forecast__low">
-                        {Math.round(day.day.mintemp_f)}°F
+                      :
+                      <div className="forecast__high">
+                        {Math.round(day.day.mintemp_c)}°C
                       </div>
+                      }
+                      {
+                        temp
+                        ?
+                        <div className="forecast__high">
+                        {Math.round(day.day.maxtemp_f)}°F
+                      </div>
+                      :
+                      <div className="forecast__high">
+                        {Math.round(day.day.mintemp_c)}°C
+                      </div>
+                      }
                       <div className="forecast__precipitation">
                         <img src={Rainy} alt="" className="rainy" />
                         <h1>{Math.round(day.day.daily_chance_of_rain)}%</h1>

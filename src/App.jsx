@@ -9,7 +9,7 @@ import Riseset from "./pages/Astronomy";
 import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [city, setCity] = useState('');
+  const [temp, setTemp] = useState(false)
 
   const navigate = useNavigate();
 
@@ -24,11 +24,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/info/:city' exact element={<Info />}/>
-        <Route path='/info/current/:city' element={<Current />}/>
-        <Route path='/info/quality/:city' element={<Quality />}/>
-        <Route path='/info/forecast/:city' element={<Forecast />}/>
-        <Route path='/info/astronomy/:city' element={<Riseset />}/>
+        <Route path='/info/:city' exact element={<Info temp={temp} setTemp={setTemp}/>}/>
+        <Route path='/info/current/:city' element={<Current temp={temp} setTemp={setTemp}/>}/>
+        <Route path='/info/quality/:city' element={<Quality temp={temp} setTemp={setTemp}/>}/>
+        <Route path='/info/forecast/:city' element={<Forecast temp={temp} setTemp={setTemp}/>}/>
+        <Route path='/info/astronomy/:city' element={<Riseset temp={temp} setTemp={setTemp}/>}/>
       </Routes>
     </div>
   );
