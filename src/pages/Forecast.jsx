@@ -52,13 +52,23 @@ const Forecast = ({temp, setTemp}) => {
                       <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
                       <h1>Forecast for " "</h1>
                     </div>
-          <div class="search__temp--change">
-            <div className={`temp__change--slider ${
-                temp ? 'active' : ''
-            }`}></div>
-            <button class="btn__temp-f click" onClick={() => setTemp(false)}>°C</button>
-            <button class="btn__temp-c click" onClick={() => setTemp(true)}>°F</button>
-          </div>
+          <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
+            </div>
         </div>
         <LoadingForecast />
       </div>
@@ -78,11 +88,23 @@ const Forecast = ({temp, setTemp}) => {
                       <h1>Forecast for "{weatherData.location.name},{" "}
                       {weatherData.location.country}"</h1>
                     </div>
-          <div class="search__temp--change">
-            <div class="temp__change--slider"></div>
-            <button class="btn__temp-f click">°C</button>
-            <button class="btn__temp-c click">°F</button>
-          </div>
+          <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
+            </div>
         </div>
         <div className="info__data">
           <div className="quality__more--module--1">
@@ -101,12 +123,27 @@ const Forecast = ({temp, setTemp}) => {
               <div className="quality__more--module-1">
                 <img src={Cloudy} alt="" className="forecast__img22" />
                 <div className="quality__more--container22">
+                  {
+                    temp
+                    ?
+                    <>
                   <h1>
                     High: <span className="less__bold">{Math.round(activeDay.day.maxtemp_f)}°F</span>
                   </h1>
                   <h1>
                     Low: <span className="less__bold">{Math.round(activeDay.day.mintemp_f)}°F</span>
                   </h1>
+                    </>
+                    :
+                    <>
+                    <h1>
+                    High: <span className="less__bold">{Math.round(activeDay.day.maxtemp_c)}°C</span>
+                  </h1>
+                  <h1>
+                    Low: <span className="less__bold">{Math.round(activeDay.day.mintemp_c)}°C</span>
+                  </h1>
+                    </>
+                  }
                 </div>
               </div>
               <div className="quality__more--module-1">
@@ -159,7 +196,17 @@ const Forecast = ({temp, setTemp}) => {
                     <div className="forecast__hourly--data">
                       <img src={Cloudy} alt="" className="hourly__img" />
                       <h1>{hour.condition.text}</h1>
-                      <h1>{Math.round(hour.temp_f)}°F</h1>
+                      {
+                        temp
+                        ?
+                        <>
+                         <h1>{Math.round(hour.temp_f)}°F</h1>
+                        </>
+                        :
+                         <>
+                         <h1>{Math.round(hour.temp_c)}°C</h1>
+                        </>
+                      }
                       <div className="hourly__inner"></div>
                     </div>
                   </div>

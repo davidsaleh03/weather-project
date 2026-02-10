@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavTwo from "../components/NavTwo";
@@ -11,12 +10,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import LoadingCurrent from "../components/LoadingCurrent";
 
-const Current = ({temp, setTemp}) => {
-    const { city } = useParams()
-    const [weatherData, setWeatherData] = useState("");
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate()
-    useEffect(() => {
+const Current = ({ temp, setTemp }) => {
+  const { city } = useParams();
+  const [weatherData, setWeatherData] = useState("");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  useEffect(() => {
     const getWeather = async () => {
       setLoading(true);
       try {
@@ -36,24 +35,40 @@ const Current = ({temp, setTemp}) => {
   if (loading) {
     return (
       <div className="Current">
-      <NavTwo />
-      <div className="info__container">
-        <div className="info__top">
-          <div className="info__top--left">
-            <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
-            <h1>Current Conditions for " "</h1>
+        <NavTwo />
+        <div className="info__container">
+          <div className="info__top">
+            <div className="info__top--left">
+              <FontAwesomeIcon
+                className="info__search1"
+                icon={faArrowLeft}
+                onClick={() => {
+                  navigate(-1);
+                }}
+              />
+              <h1>Current Conditions for " "</h1>
+            </div>
+            <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
+            </div>
           </div>
-          <div class="search__temp--change">
-            <div className={`temp__change--slider ${
-                temp ? 'active' : ''
-            }`}></div>
-            <button className="btn__temp-f click"onClick={() => setTemp(false)}>°C</button>
-            <button class="btn__temp-c click" onClick={() => setTemp(true)}>°F</button>
-          </div>
+          <LoadingCurrent />
         </div>
-        <LoadingCurrent />
       </div>
-    </div>
     );
   }
 
@@ -63,15 +78,35 @@ const Current = ({temp, setTemp}) => {
       <div className="info__container">
         <div className="info__top">
           <div className="info__top--left">
-            <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
-            <h1>Current Conditions for "{weatherData.location.name},{" "}
-            {weatherData.location.country}"</h1>
+            <FontAwesomeIcon
+              className="info__search1"
+              icon={faArrowLeft}
+              onClick={() => {
+                navigate(-1);
+              }}
+            />
+            <h1>
+              Current Conditions for "{weatherData.location.name},{" "}
+              {weatherData.location.country}"
+            </h1>
           </div>
-          <div class="search__temp--change">
-            <div class="temp__change--slider"></div>
-            <button class="btn__temp-f click">°C</button>
-            <button class="btn__temp-c click">°F</button>
-          </div>
+          <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
+            </div>
         </div>
         <div className="info__data">
           <div className="quality__more--module">
@@ -79,44 +114,108 @@ const Current = ({temp, setTemp}) => {
               <div className="current-1">
                 <img src={Cloudy} alt="" className="current__img--1" />
                 <div className="current__description">
-                  <h1 className="current__temp">{Math.round(weatherData.current.temp_f)}°F</h1>
-                  <h1 className="current__temp--text">{weatherData.current.condition.text}</h1>
+                    {
+                        temp
+                        ?
+                        <h1 className="current__temp">
+                    {Math.round(weatherData.current.temp_f)}°F
+                  </h1>
+                  :
+                  <h1 className="current__temp">
+                    {Math.round(weatherData.current.temp_c)}°C
+                  </h1>
+                    }
+                  <h1 className="current__temp--text">
+                    {weatherData.current.condition.text}
+                  </h1>
                 </div>
               </div>
               <div className="current-1">
                 <img src={Rainy2} alt="" className="current__img--1" />
                 <div className="current__prehum--descr">
                   <div className="current__precipitation">Precipitation</div>
-                  <div className="current__precipitation--data">{weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%</div>
+                  <div className="current__precipitation--data">
+                    {
+                      weatherData.forecast.forecastday[0].day
+                        .daily_chance_of_rain
+                    }
+                    %
+                  </div>
                 </div>
               </div>
               <div className="current-1 margin-no">
                 <img src={Humid} alt="" className="current__img--1" />
                 <div className="current__prehum--descr">
                   <div className="current__precipitation">Humidity</div>
-                  <div className="current__precipitation--data">{weatherData.current.humidity}%</div>
+                  <div className="current__precipitation--data">
+                    {weatherData.current.humidity}%
+                  </div>
                 </div>
               </div>
             </div>
             <div className="current__middle">
               <div className="current-1">
                 <div className="current__more">
-                  <div className="current__text-1">Feels Like: {Math.round(weatherData.current.feelslike_f)}°F</div>
-                  <div className="current__text-1">Heat Index: {Math.round(weatherData.current.heatindex_f)}°F</div>
-                  <div className="current__text-1">Dewpoint: {Math.round(weatherData.current.dewpoint_f)}°F</div>
-                  <div className="current__text-1">GTI: {Math.round(weatherData.current.gti)}</div>
+                    {
+                        temp
+                        ?
+                        <>
+                  <div className="current__text-1">
+                    Feels Like: {Math.round(weatherData.current.feelslike_f)}°F
+                  </div>
+                  <div className="current__text-1">
+                    Heat Index: {Math.round(weatherData.current.heatindex_f)}°F
+                  </div>
+                  <div className="current__text-1">
+                    Dewpoint: {Math.round(weatherData.current.dewpoint_f)}°F
+                  </div>
+                        </>
+                        :
+                        <>
+                  <div className="current__text-1">
+                    Feels Like: {Math.round(weatherData.current.feelslike_c)}°C
+                  </div>
+                  <div className="current__text-1">
+                    Heat Index: {Math.round(weatherData.current.heatindex_c)}°C
+                  </div>
+                  <div className="current__text-1">
+                    Dewpoint: {Math.round(weatherData.current.dewpoint_c)}°C
+                  </div>
+                        </>
+                    }
+                  <div className="current__text-1">
+                    GTI: {Math.round(weatherData.current.gti)}
+                  </div>
                 </div>
               </div>
               <div className="current-1">
                 <div className="current__more">
-                  <div className="current__text-1">Wind: {Math.round(weatherData.current.wind_kph)}</div>
-                  <div className="current__text-1">Wind Direction: {weatherData.current.wind_dir}</div>
-                  <div className="current__text-1">Wind Chill: {Math.round(weatherData.current.windchill_f)}°F</div>
-                  <div className="current__text-1">Visibility: {Math.round(weatherData.current.vis_km)} km</div>
+                  <div className="current__text-1">
+                    Wind: {Math.round(weatherData.current.wind_kph)}
+                  </div>
+                  <div className="current__text-1">
+                    Wind Direction: {weatherData.current.wind_dir}
+                  </div>
+                  {
+                    temp 
+                    ?
+                    <div className="current__text-1">
+                    Wind Chill: {Math.round(weatherData.current.windchill_f)}°F
+                  </div>
+                  :
+                  <div className="current__text-1">
+                    Wind Chill: {Math.round(weatherData.current.windchill_c)}°C
+                  </div>
+                  }
+                  <div className="current__text-1">
+                    Visibility: {Math.round(weatherData.current.vis_km)} km
+                  </div>
                 </div>
               </div>
               <div className="current-1 current-1-2 margin-no">
-                <div className="current__text-12">UV: {Math.round(weatherData.current.uv)}</div>
+                <div className="current__text-12">
+                  UV: {Math.round(weatherData.current.uv)}
+                </div>
               </div>
             </div>
           </div>

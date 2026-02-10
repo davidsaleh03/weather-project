@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingInfo from "../components/LoadingInfo";
 
-const Info = ({temp, setTemp}) => {
+const Info = ({ temp, setTemp }) => {
   const { city } = useParams();
   const [weatherData, setWeatherData] = useState("");
   const [loading, setLoading] = useState(true);
@@ -40,15 +40,15 @@ const Info = ({temp, setTemp}) => {
   console.log(weatherData);
 
   useEffect(() => {
-  const checkScreenSize = () => {
-    setIsSmallScreen(window.innerWidth < 660); 
-  };
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 660);
+    };
 
-  checkScreenSize();
-  window.addEventListener("resize", checkScreenSize);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
 
-  return () => window.removeEventListener("resize", checkScreenSize);
-}, []);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   function alertMod(alertChk) {
     if (!alertChk) {
@@ -122,10 +122,22 @@ const Info = ({temp, setTemp}) => {
         <div className="info__container">
           <div className="info__top">
             <h1 className="info__search">Search Results: " "</h1>
-            <div class="search__temp--change">
-              <div class="temp__change--slider"></div>
-              <button class="btn__temp-f click">°C</button>
-              <button class="btn__temp-c click">°F</button>
+            <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
             </div>
           </div>
           <LoadingInfo />
@@ -152,59 +164,62 @@ const Info = ({temp, setTemp}) => {
             {weatherData.location.country}"
           </h1>
           <div class="search__temp--change">
-            <div className={`temp__change--slider ${
-                temp ? 'active' : ''
-            }`}></div>
-            <button class="btn__temp-f click" onClick={() => setTemp(false)}>°C</button>
-            <button class="btn__temp-c click" onClick={() => setTemp(true)}>°F</button>
+            <div
+              className={`temp__change--slider ${temp ? "active" : ""}`}
+            ></div>
+            <button class="btn__temp-f click" onClick={() => setTemp(false)}>
+              °C
+            </button>
+            <button class="btn__temp-c click" onClick={() => setTemp(true)}>
+              °F
+            </button>
           </div>
         </div>
         <div className="info__data">
           <div
             className="info__current"
             onClick={() => {
-    if (!isSmallScreen) navigate(`/info/current/${city}`);
-  }}
+              if (!isSmallScreen) navigate(`/info/current/${city}`);
+            }}
           >
             <div className="info__current--top">
               <div className="current__img">
                 <img src={Cloudy} alt="" className="current__img--img" />
               </div>
               <div className="current__info">
-                {
-                    temp
-                    ?
-                    <h1 className="current__ammount">
-                  {Math.round(weatherData.current.temp_f)}°F
-                </h1>
-                :
-                <h1 className="current__ammount">
-                  {Math.round(weatherData.current.temp_c)}°C
-                </h1>
-                }
+                {temp ? (
+                  <h1 className="current__ammount">
+                    {Math.round(weatherData.current.temp_f)}°F
+                  </h1>
+                ) : (
+                  <h1 className="current__ammount">
+                    {Math.round(weatherData.current.temp_c)}°C
+                  </h1>
+                )}
                 <h1 className="current__feel">
                   {weatherData.current.condition.text}
                 </h1>
               </div>
             </div>
             <div className="info__current--bottom">
-                {
-                    temp 
-                    ?
-                    <h1 className="current__bottom">
-                Feels Like: {Math.round(weatherData.current.feelslike_f)}°F
-              </h1>
-              :
-              <h1 className="current__bottom">
-                Feels Like: {Math.round(weatherData.current.feelslike_c)}°C
-              </h1>
-                }
-             
+              {temp ? (
+                <h1 className="current__bottom">
+                  Feels Like: {Math.round(weatherData.current.feelslike_f)}°F
+                </h1>
+              ) : (
+                <h1 className="current__bottom">
+                  Feels Like: {Math.round(weatherData.current.feelslike_c)}°C
+                </h1>
+              )}
+
               <h1 className="current__bottom">
                 Humidity: {Math.round(weatherData.current.humidity)}
               </h1>
             </div>
-            <div className="see__more" onClick={() => navigate(`/info/current/${city}`)}>
+            <div
+              className="see__more"
+              onClick={() => navigate(`/info/current/${city}`)}
+            >
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>
@@ -219,8 +234,8 @@ const Info = ({temp, setTemp}) => {
           <div
             className="info__air-quality"
             onClick={() => {
-    if (!isSmallScreen) navigate(`/info/quality/${city}`);
-  }}
+              if (!isSmallScreen) navigate(`/info/quality/${city}`);
+            }}
           >
             <div className="air__quality--container">
               <div className="airquality__info">
@@ -240,7 +255,10 @@ const Info = ({temp, setTemp}) => {
                   </div>
                 </div>
               </div>
-              <div className="see__more more--2" onClick={() => navigate(`/info/quality/${city}`)}>
+              <div
+                className="see__more more--2"
+                onClick={() => navigate(`/info/quality/${city}`)}
+              >
                 <h1 className="see__text">See More</h1>
                 <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
               </div>
@@ -288,34 +306,30 @@ const Info = ({temp, setTemp}) => {
                       className="forecast__day"
                       key={index}
                       onClick={() => {
-    if (!isSmallScreen) navigate(`/info/forecast/${city}`);
-  }}
+                        if (!isSmallScreen) navigate(`/info/forecast/${city}`);
+                      }}
                     >
                       <div className="forecast__date">
                         {day.date.slice(5, 10)}
                       </div>
-                      {
-                        temp 
-                        ?
+                      {temp ? (
                         <div className="forecast__high">
-                        {Math.round(day.day.maxtemp_f)}°F
-                      </div>
-                      :
-                      <div className="forecast__high">
-                        {Math.round(day.day.mintemp_c)}°C
-                      </div>
-                      }
-                      {
-                        temp
-                        ?
+                          {Math.round(day.day.maxtemp_f)}°F
+                        </div>
+                      ) : (
                         <div className="forecast__high">
-                        {Math.round(day.day.maxtemp_f)}°F
-                      </div>
-                      :
-                      <div className="forecast__high">
-                        {Math.round(day.day.mintemp_c)}°C
-                      </div>
-                      }
+                          {Math.round(day.day.mintemp_c)}°C
+                        </div>
+                      )}
+                      {temp ? (
+                        <div className="forecast__high">
+                          {Math.round(day.day.maxtemp_f)}°F
+                        </div>
+                      ) : (
+                        <div className="forecast__high">
+                          {Math.round(day.day.mintemp_c)}°C
+                        </div>
+                      )}
                       <div className="forecast__precipitation">
                         <img src={Rainy} alt="" className="rainy" />
                         <h1>{Math.round(day.day.daily_chance_of_rain)}%</h1>
@@ -334,7 +348,10 @@ const Info = ({temp, setTemp}) => {
                   );
                 })}
             </div>
-            <div className="see__more more--3" onClick={() => navigate(`/info/forecast/${city}`)}>
+            <div
+              className="see__more more--3"
+              onClick={() => navigate(`/info/forecast/${city}`)}
+            >
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>
@@ -342,16 +359,18 @@ const Info = ({temp, setTemp}) => {
           <div
             className="info__riseset"
             onClick={() => {
-    if (!isSmallScreen) navigate(`/info/astronomy/${city}`);
-  }}
-
+              if (!isSmallScreen) navigate(`/info/astronomy/${city}`);
+            }}
           >
             <div className="riseset__info">
               <div className="riseset__h1">{nextTitle}</div>
               <div className="riseset__act">{nextEventTime}</div>
               <div className="riseset__left">{timeUntil}</div>
             </div>
-            <div className="see__more more--4" onClick={() => navigate(`/info/astronomy/${city}`)}>
+            <div
+              className="see__more more--4"
+              onClick={() => navigate(`/info/astronomy/${city}`)}
+            >
               <h1 className="see__text">See More</h1>
               <FontAwesomeIcon className="arrow__more" icon={faArrowRight} />
             </div>

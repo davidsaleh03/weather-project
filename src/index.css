@@ -534,6 +534,7 @@ INFO
   padding: 0 6px;
   color: white;
   z-index: 3;
+  cursor: pointer;
 }
 
 .btn__one {

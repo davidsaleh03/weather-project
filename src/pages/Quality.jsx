@@ -40,13 +40,23 @@ const Quality = ({temp, setTemp}) => {
             <FontAwesomeIcon className="info__search1" icon={faArrowLeft} onClick={()=>{navigate(-1)}} />
             <h1>Air Quality for " "</h1>
           </div>
-          <div class="search__temp--change">
-            <div className={`temp__change--slider ${
-                temp ? 'active' : ''
-            }`}></div>
-            <button class="btn__temp-f click" onClick={() => setTemp(false)}>°C</button>
-            <button class="btn__temp-c click" onClick={() => setTemp(true)}>°F</button>
-          </div>
+          <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
+            </div>
         </div>
         <LoadingQuality />
       </div>
@@ -64,11 +74,23 @@ const Quality = ({temp, setTemp}) => {
             <h1>Air Quality for "{weatherData.location.name},{" "}
             {weatherData.location.country}"</h1>
           </div>
-          <div class="search__temp--change">
-            <div class="temp__change--slider"></div>
-            <button class="btn__temp-f click">°C</button>
-            <button class="btn__temp-c click">°F</button>
-          </div>
+          <div className="search__temp--change">
+              <div
+                className={`temp__change--slider ${temp ? "active" : ""}`}
+              ></div>
+              <button
+                className="btn__temp-f click"
+                onClick={() => setTemp(false)}
+              >
+                °C
+              </button>
+              <button
+                className="btn__temp-c click"
+                onClick={() => setTemp(true)}
+              >
+                °F
+              </button>
+            </div>
         </div>
         <div className="info__data">
           <div className="quality__more--module">
